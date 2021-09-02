@@ -60,16 +60,70 @@ class _PageContadorState extends State<PageContador> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          // print("Incremento en el contador $_inContador");
-          setState(() {
-            _inContador++;
-          });
-        },
-      ),
+      floatingActionButton: _crearBotones(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  /*
+  * Notas.
+  * Separación del código para no saturar la función build del State
+  *   01 - Creamos una función privada que nos retorna un Row Widget y le pasamos el widget
+  *        al floatingActionButton para crear la botonera de las acciones.
+  *   02 - Con el argumento mainAxisAlignment del Row Widget podemos cambiar la posición del contenido
+  *   03 - El SizedBox Widget es muy parecido como si fuera un tipo de HTML donde se puede especificar
+  *        que puede tener un ancho con el argumento width y un alto con el argumento height
+  *   04 - El Expanded Widget va a estirar el widget que tenga en su interior dentro de child
+  *        para este ejemplo como se utiliza después del botón del icono con refresh
+  *        nos da la falsa ilusión que existe un espacio vacío entre el primer botón y demás botones.
+  */
+  Widget _crearBotones() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 20.0,
+        ),
+        Visibility(
+          visible: _inContador == 0 ? false : true,
+          child: FloatingActionButton(
+            child: Icon(Icons.refresh),
+            onPressed: _contadorReiniciar,
+          ),
+        ),
+        Expanded(
+          child: SizedBox(),
+        ),
+        Visibility(
+          visible: _inContador > 0 ? true : false,
+          child: FloatingActionButton(
+            child: Icon(Icons.remove),
+            onPressed: _contadorRestar,
+          ),
+        ),
+        SizedBox(
+          width: 15.0,
+        ),
+        FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: _contadorSumar,
+        ),
+        SizedBox(
+          width: 20.0,
+        ),
+      ],
+    );
+  }
+
+  void _contadorReiniciar() {
+    setState(() => _inContador = 0);
+  }
+
+  void _contadorRestar() {
+    setState(() => _inContador--);
+  }
+
+  void _contadorSumar() {
+    setState(() => _inContador++);
   }
 }
