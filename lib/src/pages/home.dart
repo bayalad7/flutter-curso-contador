@@ -4,6 +4,8 @@ class PageHome extends StatelessWidget {
   // Declaramos una variable para reutilizar el código de los estilos
   final fnt25 = new TextStyle(fontSize: 25);
 
+  final contador = 10;
+
   /*
    * Notas.
    * 01 - El widget Column, puede recibir un arreglo de widget's
@@ -18,13 +20,18 @@ class PageHome extends StatelessWidget {
    * 03 - Para ver los mensajes con print en VSCode, tenemos que abrir la consola del depuración
    * 04 - Con el floatingActionButtonLocation mevemos la ubicación del botón pero este widget al mismo
    *      del widget floatingActionButton dentro del Scaffold
+   * 
+   * contador
+   * 01 - Para poder alterar el valor del contador, tenemos que utilizar un StatefulWidget
+   *      el cual nos va a permitir controlar el estado del contador ya que los StatelessWidget
+   *      no, nos permiten cambiar los valores de sus propiedades.
    */
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home Título"),
+        title: Text("Página Home: StatelessWidget"),
         centerTitle: true,
       ),
       body: Center(
@@ -36,7 +43,7 @@ class PageHome extends StatelessWidget {
               style: fnt25,
             ),
             Text(
-              "0",
+              "$contador",
               style: fnt25,
             ),
           ],
@@ -45,7 +52,8 @@ class PageHome extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          print("Hola mundo");
+          print("Incremento en el contador $contador");
+          // contador++;
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

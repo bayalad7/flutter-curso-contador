@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Importaciones nuestras
-import 'pages/home.dart';
+// import 'pages/home.dart';
+import 'pages/contador.dart';
 
 // Creamos el widget que necesita la función runApp();
 class MyApp extends StatelessWidget {
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
      */
     return MaterialApp(
       home: Center(
-        child: PageHome(), // Importamos nuestra widget - página home
+        // child: PageHome(), // Importamos nuestro widget - página home
+        child: PageContador(), // Importamos nuestro widget - página contador
       ),
     );
   }
