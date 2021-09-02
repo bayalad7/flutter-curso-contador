@@ -31,6 +31,10 @@ class MyApp extends StatelessWidget {
      * -------------------------------------------------------------------------
      * El widget Center, tiene como propiedad a child que puede recibir otro widget
      * como lo viene siendo el widget Text
+     * -------------------------------------------------------------------------
+     * Con el argumento debugShowCheckedModeBanner ocultamos la etiqueta
+     * que dice "Debug" en el banner
+     * 
      * 
      * Notas importantes:
      * - child es algo que existe muchisimo y que se encuentra en casi todos los widgets
@@ -38,6 +42,7 @@ class MyApp extends StatelessWidget {
      *   textos, labels, etc...
      */
     return MaterialApp(
+      debugShowCheckedModeBanner: true,
       home: Center(
         // child: PageHome(), // Importamos nuestro widget - página home
         child: PageContador(), // Importamos nuestro widget - página contador
