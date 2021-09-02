@@ -9,6 +9,15 @@ class PageHome extends StatelessWidget {
    * 01 - El widget Column, puede recibir un arreglo de widget's
    * 02 - Esos widget’s que recibe Column, pueden ser cualquier widget
    * 03 - Con mainAxisAlignment centramos todo el contenido dentro del widget Column 
+   * 
+   * floatingActionButton
+   * 01 - El argumento "floatingActionButton" del "Scaffold" recibe un widget de tipo "FloatingActionButton"
+   *      y el widget de "FloatingActionButton" recibe un argumento "onPressed" 
+   *      que recibe una función de tipo void (que no retorna nada)
+   * 02 - Iconos de flutter con material: https://material-ui.com/es/components/material-icons/
+   * 03 - Para ver los mensajes con print en VSCode, tenemos que abrir la consola del depuración
+   * 04 - Con el floatingActionButtonLocation mevemos la ubicación del botón pero este widget al mismo
+   *      del widget floatingActionButton dentro del Scaffold
    */
 
   @override
@@ -33,6 +42,13 @@ class PageHome extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          print("Hola mundo");
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
